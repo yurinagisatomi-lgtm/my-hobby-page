@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SATOMI | Hobby Page</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1417;
+      --panel:#151c20;
+      --ink:#e6edf2;
+      --muted:#9fb0bb;
+      --accent:#3a8fb7;
+      --line:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#0c1114,#10171c 40%,#0c1114);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+
+    .wrap{max-width:920px;margin:0 auto;padding:16px}
+    header{padding:24px 12px 8px}
+    .brand{
+      font-family:"Playfair Display",serif;
+      letter-spacing:.12em;
+      font-weight:700;
+      font-size:clamp(28px,7vw,44px);
+    }
+    .tag{color:var(--muted);margin-top:6px}
+
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      margin:14px 0;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+
+    .section-title{
+      display:flex;align-items:center;gap:10px;margin:4px 0 10px;
+      font-weight:500;letter-spacing:.08em
+    }
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+    /* ---- hero (slider) ---- */
+    .hero{
+      position:relative;overflow:hidden;border-radius:18px;
+      border:1px solid var(--line);min-height:42vh;
+      display:flex;align-items:flex-end;padding:16px
+    }
+
+    .hero-slides{
+      position:absolute;inset:0;
+    }
+    .hero-slides img{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity 1.5s ease;
+      filter:brightness(.75) saturate(.9);
+    }
+    .hero-slides img.active{
+      opacity:1;
+    }
+
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(1200px 400px at 10% 10%,rgba(58,143,183,.15),transparent 40%),
+        linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.75));
+      z-index:1;
+    }
+
+    .hero .copy{position:relative;z-index:2}
+    .hero h1{
+      font-family:"Playfair Display",serif;margin:0;
+      font-size:clamp(26px,7vw,42px);letter-spacing:.14em
+    }
+    .hero p{margin:.4em 0 0;color:var(--muted)}
+
+    /* ---- grids ---- */
+    .grid{display:grid;gap:10px}
+    .g-2{grid-template-columns:repeat(2,1fr)}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    @media(min-width:720px){
+      .g-2{grid-template-columns:repeat(3,1fr)}
+      .g-3{grid-template-columns:repeat(4,1fr)}
+    }
+
+    .tile{
+      position:relative;border-radius:12px;overflow:hidden;
+      border:1px solid var(--line);background:var(--panel)
+    }
+    .tile img{aspect-ratio:1/1;object-fit:cover;filter:saturate(.95) contrast(1.02)}
+    .tile .cap{
+      position:absolute;left:0;right:0;bottom:0;padding:8px 10px;
+      background:linear-gradient(180deg,transparent,rgba(0,0,0,.7));
+      font-size:12px;color:#fff
+    }
+
+    footer{padding:16px;color:var(--muted);text-align:center;font-size:12px}
+
+    .reveal{opacity:0;transform:translateY(14px);transition:all .7s cubic-bezier(.2,.6,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">SATOMI</div>
+      <div class="tag">KYUDO / SWEETS / COOKING / PETS</div>
+    </header>
+
+    <!-- Hero / Slider -->
+    <section class="hero reveal">
+      <div class="hero-slides">
+        <!-- 🔽 ここを作った画像ファイル名に変更 -->
+        <img src="kyudo_slide1.jpg" class="active" alt="">
+        <img src="kyudo_slide2.jpg" alt="">
+        <img src="kyudo_slide3.jpg" alt="">
+      </div>
+      <div class="copy">
+        <h1>My Quiet Passions</h1>
+        <p>弓道から得られる物は多い。甘いもの、あたたかい料理、そしてペットとの癒しの時間。</p>
+      </div>
+    </section>
+
+    <!-- Kyudo -->
+<section class="card reveal">
+  <div class="section-title"><span class="dot"></span><span>弓道</span></div>
+  <p style="color:var(--muted);margin-top:0">
+    休日はほとんど練習か大会。静けさの中で、呼吸と所作に集中する時間。
+  </p>
+  <div class="grid g-2">
+    <div class="tile">
+      <img src="滑川弓道会-1.png" alt="">
+      <div class="cap">道場の空気</div>
+    </div>
+
+    <div class="tile">
+      <img src="IMG_7201.jpeg" alt="">
+      <div class="cap">的と向き合う</div>
+    </div>
+
+    <div class="tile">
+      <img src="IMG_8061.jpg" alt="">
+      <div class="cap">やごろ</div>
+    </div>
+
+    <div class="tile">
+      <img src="806.jpg" alt="">
+      <div class="cap">ミラクル</div>
+    </div>
+  </div>
+</section>
+
+    <!-- Sweets & Cooking -->
+    <section class="card reveal">
+      <div class="section-title"><span class="dot"></span><span>お菓子作り・料理</span></div>
+      <p style="color:var(--muted);margin-top:0">
+        洋菓子作りが好き。料理は和・洋・中なんでもOK
+      </p>
+      <div class="grid g-3">
+        <div class="tile"><img src="sweets1.jpg" alt=""><div class="cap">クランブルケーキ</div></div>
+        <div class="tile"><img src="sweets2.jpg" alt=""><div class="cap">シフォンチョコロール</div></div>
+        <div class="tile"><img src="sweets3.jpg" alt=""><div class="cap">ビスキュイレアチーズ</div></div>
+        <div class="tile"><img src="sweets4.jpg" alt=""><div class="cap">シュークリーム</div></div>
+        <div class="tile"><img src="sweets5.jpg" alt=""><div class="cap">ビビンバ</div></div>
+        <div class="tile"><img src="sweets6.jpg" alt=""><div class="cap">鶏むね甘酢煮</div></div>
+      </div>
+    </section>
+
+    <!-- Pets -->
+    <section class="card reveal">
+      <div class="section-title"><span class="dot"></span><span>ペット</span></div>
+      <p style="color:var(--muted);margin-top:0">
+        犬2匹と猫5匹と暮らしています。毎日の癒しと、かけがえのない家族。
+      </p>
+      <div class="grid g-3">
+        <div class="tile"><img src="pet1.jpg" alt=""><div class="cap">ココア</div></div>
+        <div class="tile"><img src="pet2.jpg" alt=""><div class="cap">ココアと中</div></div>
+        <div class="tile"><img src="pet3.jpg" alt=""><div class="cap">ココアとうさぎ</div></div>
+        <div class="tile"><img src="pet4.jpg" alt=""><div class="cap">ハンモック好き</div></div>
+        <div class="tile"><img src="pet5.jpg" alt=""><div class="cap">坂本</div></div>
+        <div class="tile"><img src="pet6.jpg" alt=""><div class="cap">しゅき</div></div>
+      </div>
+    </section>
+
+    <footer>© SATOMI</footer>
+  </div>
+
+  <script>
+    // reveal animation
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=> e.isIntersecting && e.target.classList.add('show'));
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // hero slider
+    const slides = document.querySelectorAll('.hero-slides img');
+    let current = 0;
+    setInterval(()=>{
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000); // 5秒ごと
+  </script>
+</body>
+</html>
